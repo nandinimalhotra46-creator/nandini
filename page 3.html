@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aesthetic Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:cursive;
+    position:relative;
+    background-image:-o-linear-gradient(45%);
+    opacity: initial;
+}
+
+/* Background Image */
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:url("d:\User\USER\One Drive\nannu.jpeg") center/cover no-repeat;
+    filter: blur(8px) brightness(0.5);
+    transform: scale(1.1);
+    z-index:-2;
+}
+
+/* Dark Overlay */
+body::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.2);
+    z-index:-1;
+    backdrop-filter: blur(4px);
+}
+
+/* Main Container */
+.main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* Center Card */
+.card{
+    width:320px;
+    height:560px;
+    border-radius:35px;
+    overflow:hidden;
+    position:relative;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Main Image */
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Left Text */
+.text{
+    position:absolute;
+    left:20px;
+    top:140px;
+    color:#fb0404d5;
+    font-size:40px;
+    font-family:"Edwardian Script ITC";
+    line-height:1.7;
+    width:450px;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Right Text */
+.right-text{
+    position:absolute;
+    right:20px;
+    top:140px;
+    color:#fb0404d5;
+    font-size:40px;
+    font-family:"Edwardian Script ITC";
+    line-height:1.7;
+    width:550px;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Question Box */
+.question-box{
+    margin-top:20px;
+    text-align:center;
+}
+
+.question-box h2{
+    color:#fb0404d5;
+    margin-bottom:15px;
+}
+
+/* Buttons */
+.buttons{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+}
+
+button{
+    border:none;
+    padding:12px 28px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+    transition:0.3s;
+}
+
+#yesBtn{
+    background:#f994b5c3;
+    color:rgb(81, 3, 48);
+}
+
+#yesBtn:hover{
+    transform:scale(1.08);
+}
+
+#noBtn{
+    background:rgb(186, 155, 173);
+    color:rgb(81, 3, 48);
+}
+
+#noBtn:hover{
+    transform:scale(1.08);
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:rgba(251, 2, 35, 0.976);
+    animation:float 6s infinite linear;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    to{
+        transform:translateY(-100px);
+        opacity:1;
+    }
+}
+</style>
+</head>
+
+<body background="d:\User\USER\One Drive\nannu.jpeg" >
+
+<div class="text"><b>
+    कभी लड़ता है, कभी सताता है,<BR>
+    पर सबसे ज्यादा प्यार भी जताता है।</b>
+</div>
+
+<div class="main">
+
+    <div class="card">
+        <img src="d:\User\USER\One Drive\updated collage.jpeg" alt="">
+    </div>
+
+    <!-- YES / NO -->
+    <div class="question-box">
+        <h2>मेरे लिए मेरा हीरा है तू, चाहे मान या ना मान। लेकिन तू मेरी जान है। ❤️ ❤️</h2>
+
+        <div class="buttons">
+            <button id="yesBtn">Yes 💖</button>
+            <button id="noBtn">No 😢</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="right-text"><b>
+    मेरी हर छोटी बात पर हँसता है,<BR>
+    पर मुश्किल में सबसे पहले साथ निभाता है।</b>
+</div>
+
+<script>
+
+/* Floating hearts */
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="♥";
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*25+10)+"px";
+    heart.style.animationDuration=
+    (Math.random()*5+4)+"s";
+
+    document.body.appendChild(heart);
+}
+
+/* YES / NO Logic */
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+let count = 0;
+
+noBtn.addEventListener("click", () => {
+
+    count++;
+
+    if(count==1){
+        alert("Are you sure? 🥺");
+        noBtn.innerText = "Really No? 😭";
+    }
+    else if(count==2){
+        alert("Please think again 💔");
+        noBtn.innerText = "Think Again 😢";
+    }
+    else if(count==3){
+        alert("No option nahi h 😏❤️");
+        noBtn.innerText = "Last Chance 😭";
+    }
+    else{
+        alert("Ab Yes hi dabana padega 😌💖");
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+    window.location.href = "page 4.html";
+});
+
+</script>
+
+</body>
+</html>
